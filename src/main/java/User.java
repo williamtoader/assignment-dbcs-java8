@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class User {
+public class User implements Comparable<User> {
     Long id;
     String name;
     Integer age;
@@ -24,4 +24,16 @@ public class User {
         return user;
     }
 
+    @Override
+    public int compareTo(User o) {
+        return this.age.compareTo(o.age);
+    }
+
+    public int descCompareTo(User o) {
+        return - this.age.compareTo(o.age);
+    }
+
+    public boolean equals(User o) {
+        return this.name.equals(o.name);
+    }
 }
