@@ -27,15 +27,22 @@ public class Main {
                     return user;
                 })
                 .collect(Collectors.toList());
+
         if(filteredUsersUnder18.size() > 0)
             System.out.println(filteredUsersUnder18.get(filteredUsersUnder18.size() - 1));
+
         System.out.println(filteredUsersUnder18.stream().max(User::compareTo).orElse(null));
         System.out.println(filteredUsersUnder18.stream().min(User::compareTo).orElse(null));
         System.out.println(filteredUsersUnder18.stream().distinct().collect(Collectors.toList()));
 
         List<User> filteredUsersOver30 = users.stream()
                 .filter(user -> user.getAge() > 30)
-                .map(user -> {  user.setName(user.getName().toUpperCase(Locale.ROOT)); return user; })
+                .map(user -> {
+                    user.setName(
+                            user.getName().toUpperCase(Locale.ROOT)
+                    );
+                    return user;
+                })
                 .sorted(User::descCompareTo)
                 .collect(Collectors.toList());
 
